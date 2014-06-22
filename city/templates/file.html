@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript"  src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.parse.min.js"></script>
+    <script src="/js/highcharts.js"></script>
+    <script src="/js/exporting.js"></script>
+    <script src="/js/file.js"></script>
+    <script src="/js/chart.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <style>
+        .file-box{ position:relative;width:340px}
+        .txt{ height:22px; border:1px solid #cdcdcd; width:180px;}
+        .btn{ background-color:#FFF; border:1px solid #CDCDCD;height:24px; width:70px;}
+        .file{ position:absolute; top:0; left:165px; top:8px; filter:alpha(opacity:0);opacity: 0;width:260px }
+    </style>
+
+    <input type='text' name='textfield' id='textfield' class='txt' readonly="true" />  
+    <input type='button' class='btn' value='浏览...' />
+    <input type="file" name="fileField" class="file" id="selectfile" size="28"/>
+    
+    <div>
+        <input type="button" id="table" value="Table"/>
+        <input type="button" id="diagram" value="DiaGram">
+    </div>
+    
+    <div id="chartBox"></div>
+    <div id="createtable"></div>
+</body>
+<script>
+
+
+(function() {
+    $("#table").click(function() {
+        if ($("tr input").length) {
+
+            $("#createtable").show()
+            $("#chartBox").hide()
+        }
+        else{
+            if(displayFlag){
+                $('input[type=file]').parse({
+                    complete: function(data) {
+                        console.debug(data)
+                        fromFile.CreateTable(data)
+                    },
+                    error:function(){
+                        alert("PLS select the file");                    
+                    }
+                });
+
+            }
+
+        }
+
+    });
+     $("#diagram").click(function() {
+        $("#chartBox").show()
+        if($("tr input:checked").length){
+            fromFile.DataDisplay();
+            $("#createtable").hide();
+        }
+        else{
+            if(displayFlag){
+                alert("PLS select the the data you want display");
+            }
+        }
+        
+    });
+})()
+
+
+// 标示是否是有文件切换 1；有，0：没有
+var displayFlag
+$("#selectfile").change(function(){
+
+    if($(this)[0].files.length){
+        $("#textfield").val($(this)[0].files[0].name)
+        displayFlag=1
+    }
+    else{
+        $("#textfield").val("")
+        displayFlag=0
+    }
+
+    if(displayFlag){
+        $("#createtable").html("")
+
+        $("#chartBox").html("")
+    }
+    
+})
+
+</script>
+</html>

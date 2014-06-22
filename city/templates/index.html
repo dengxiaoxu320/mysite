@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=mb4TCE4Kzc9XUFsodrvZNeLb"></script>
+        <script type="text/javascript"  src="/js/jquery.min.js"></script>
+        <script src="/js/highcharts.js"></script>
+        <script src="/js/exporting.js"></script>
+        <script src="/js/map.js"></script>
+        <script src="/js/chart.js"></script>
+        <script src="/js/search.js"></script>
+
+        <link rel="stylesheet" href="/css/city.css"/>
+        <title>
+            The history city
+        </title>
+    </head>
+<body>
+
+    <div id="head" align="center">
+        <form action=""></form>
+        <input type="text" id="kw" value="江苏"/>
+        <input type="button" id="su" class="s_btn" name="search" value="搜索"/>
+    </div>
+    <div id="allmap"></div>
+    <div id="left-restul"></div>
+    <div id="suggest" class="auto_show"></div>
+
+    <div id="page">
+        <span  align="bottom">
+            <u id="next" float="left"><a href="javascript:void(0);">Next</a></u>
+            <u id="prev" float="right"><a href="javascript:void(0);">Prev</a></u>
+        </span>
+    </div>
+    <div id="chartBox">
+        This is an incredibly annoying ad of the type you might find on some web sites.
+        <div id="closeBox">&otimes;</div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    var map = new BMap.Map("allmap");
+    map.centerAndZoom("北京", 5);
+
+    map.enableScrollWheelZoom();
+    map.enableContinuousZoom();
+
+
+    dChart.drag();
+{#    dChart.groupByPro();#}
+{#    dChart.groupBybatch();#}
+{#    dChart.getDensity();#}
+{#    dChart.groupByregion();#}
+{#    dMap.getBoundary();#}
+
+    $("#page").hide();
+    dsearch.mouse();
+
+    $("#su").click(function(){
+
+{#        dMap.marker("杭州市余杭区塘栖镇",blueIcon)#}
+        dMap.getcity();
+
+    });
+
+</script>

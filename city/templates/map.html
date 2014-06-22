@@ -1,0 +1,442 @@
+/***酒店地图搜索 20131119 update by she***/
+$("#hotelMapLeft").bind("mousemove", function(event) {
+	$('#hotelMapLeft').unbind("mousemove");
+	hotelMap.toggleLeftMenu();
+	hotelMap.moveList();
+	hotelMap.openResultBox();
+});
+
+$(function() {
+	hotelMap.init();	// 页面初始化
+});
+
+// 闭包，谷歌坐标转百度坐标
+(function(){
+	function load_script(xyUrl, callback){
+	    var head = document.getElementsByTagName('head')[0];
+	    var script = document.createElement('script');
+	    script.type = 'text/javascript';
+	    script.src = xyUrl;
+	    //借鉴了jQuery的script跨域方法
+	    script.onload = script.onreadystatechange = function(){
+	        if((!this.readyState || this.readyState === "loaded" || this.readyState === "complete")){
+	            callback && callback();
+	            // Handle memory leak in IE
+	            script.onload = script.onreadystatechange = null;
+	            if ( head && script.parentNode ) {
+	                head.removeChild( script );
+	            }
+	        }
+	    };
+	    // Use insertBefore instead of appendChild  to circumvent an IE6 bug.
+	    head.insertBefore( script, head.firstChild );
+	}
+	function translate(point,type,callback){
+	    var callbackName = 'cbk_' + Math.round(Math.random() * 10000);    //随机函数名
+	    var xyUrl = "http://api.map.baidu.com/ag/coord/convert?from="+ type + "&to=4&x=" + point.lng + "&y=" + point.lat + "&callback=BMap.Convertor." + callbackName;
+	    //动态创建script标签
+	    load_script(xyUrl);
+	    BMap.Convertor[callbackName] = function(xyResult){
+	        delete BMap.Convertor[callbackName];    //调用完需要删除改函数
+	        var point = new BMap.Point(xyResult.x, xyResult.y);
+	        callback && callback(point);
+	    }
+	}
+
+	window.BMap = window.BMap || {};
+	BMap.Convertor = {};
+	BMap.Convertor.translate = translate;
+})();
+
+var map = null;	// 地图实例
+var timer = null;	// 定时器
+var $transfer = null;	// jQuery ajax请求对象
+var hotelMap = {
+	// 页面初始化
+	init:	function() {
+		hotelMap.showMap();
+		hotelMap.recharge();
+		hotelMap.brands();
+		hotelMap.filter();
+	},
+	// 已选条件显示
+	loadCond:	function() {
+		// 价格
+		if ($('#ulPriceFilter a.selected').length) {
+			$('#selectMenu .housePrice .input_txt').text($('#ulPriceFilter a.selected').text());
+		}
+		
+		// 星级
+		if ($('#ulStarFilter a.selected').length > 1) {
+			$('#selectMenu .starFilter .input_txt').text($('#ulStarFilter a.selected:eq(0)').text() + '...');
+		}
+		else {
+			$('#selectMenu .starFilter .input_txt').text($('#ulStarFilter a.selected').text());
+		}
+		
+		// 品牌
+		if ($('#ulBrandFilter a.selected, #brandFilter a.selected').length > 1) {
+			$('#selectMenu .brandFilter .input_txt').text($('#ulBrandFilter a.selected, #brandFilter a.selected').eq(0).text() + '...');
+		}
+		else {
+			$('#selectMenu .brandFilter .input_txt').text($('#ulBrandFilter a.selected, #brandFilter a.selected').eq(0).text());
+		}
+		
+		// 设施
+		if ($('#ulFacilityFilter a.selected').length > 1) {
+			$('#selectMenu .facility .input_txt').text($('#ulFacilityFilter a.selected').eq(0).text() + '...');
+		}
+		else {
+			$('#selectMenu .facility .input_txt').text($('#ulFacilityFilter a.selected').eq(0).text());
+		}
+	},
+	// 城市品牌列表
+	brands:	function() {
+		var selected = $('#init_brands').val() != '' ? $('#init_brands').val().split(',') : [];
+		$('#ulBrandFilter a.selected, #brandFilter a.selected').each(function(){
+			selected.push($(this).attr('data'));
+		});
+		
+		$.ajax({
+			url:		'/ajax/mapBrands/',
+			type:		'get',
+			dataType:	'html',
+			data:		{
+				city:	$('#city_id').val(),
+				brands:	selected
+			},
+			success:	function(s) {
+				$('#init_brands').val('');
+				$('#selectMenu .brandFilter').html(s);
+				hotelMap.toggleBrandsMenu();
+				
+				// 绘制已经条件显示
+				hotelMap.loadCond();
+			},
+			error:		function(e) {}
+		});
+	},
+	// 初始化地图
+	showMap: function() {
+		map = new BMap.Map("divHotelMap");
+		map.centerAndZoom($('#city_name').val());
+		map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT}));
+		map.addControl(new BMap.NavigationControl());	// 添加平移缩放控件
+		/*
+		setTimeout(function(){
+           map.setZoom(14);   //放大到14级
+        }, 1500);
+        */
+		map.enableScrollWheelZoom(true);	// 鼠标滚轮放大缩小
+	},
+
+	//展开二级目录
+	toggleLeftMenu: function() {
+		var lmItem = $("#selectMenu .condition dt");
+		lmItem.each(function(i, n) {
+			$(n).hover(function() {
+				$(this).find(".ulMenu").show();
+			},
+			function() {
+				$(this).find(".ulMenu").hide();
+			})
+		})
+	},
+
+	//品牌二级目录及弹框
+	toggleBrandsMenu: function() {
+		$("#selectMenu .brandFilter dt").hover(function() {
+			$(this).find(".ulMenu").show();
+		},
+		function() {
+			$(this).find(".ulMenu").hide();
+		});
+		
+		var tip = $("#selectMenu ul .more");
+		tip.click(function() {
+			$("#selectMenu .PopBoxt").hide();
+			$(this).parents(".condition").eq(0).find(".PopBoxt").show();
+		}) 
+
+      //更多设施品牌鼠标离开隐藏
+		$("#selectMenu .PopBoxt").hover(function(){ 	
+		},function(){
+		   $(this).hide();
+		})
+		$("#selectMenu dd span.clos").click(function() {
+			$(this).parents(".PopBoxt").hide();
+		});
+	},
+
+	moveList: function() {
+		$("#poi-list dl").live('mouseenter', function() {
+			$(this).addClass("hoverCur");
+		}).live('mouseleave', function() {
+			$(this).removeClass("hoverCur");
+		});
+	},
+
+	//搜索结果列表出现
+	openResultBox: function() {
+		$("#ulPriceFilter li a").click(function() {
+			var _this=$(this);
+			if(_this.hasClass(".selected")){
+				_this.removeClass("selected");
+			}
+			else{
+				if(_this.parents("#ulPriceFilter")){
+					_this.parents("#ulPriceFilter").find("a").removeClass("selected");
+				}
+				_this.addClass("selected");
+			}
+		});
+	},
+
+	bindResultEvent: function() {
+		$("#r_result .close").click(function() {
+			$(this).parents("#r_result").hide();
+		});
+		
+		// 绑定翻页事件
+		$('#r_result .page a').on('click', function(){
+			var total_count = parseInt($('#total_count').val());
+			var total_num = Math.ceil(total_count / 10);
+			var page_num = parseInt($('#page_num').val());
+			
+			if ($(this).hasClass('prev')) {
+				var p = page_num - 1;
+				if (p) {
+					hotelMap.recharge(p);
+				}
+			}
+			else {
+				var p = page_num + 1;
+				if (p <= total_num) {
+					hotelMap.recharge(p);
+				}
+			}
+		});
+	},
+	
+	// Ajax查询酒店列表
+	recharge:	function(p) {
+		var url = '/ajax/maprecharge/';
+		var city = cleanCityName($("#txtCity").val());
+		var idate = $("#begin_date").val();
+		var odate = $("#end_date").val();
+		
+		// 日期检验
+		if(idate=="yyyy-mm-dd"){
+			$("#begin_date").addClass("err");
+			return false;
+		}
+		if(odate=="yyyy-mm-dd"){
+			$("#end_date").addClass("err");
+			return false;
+		}
+		if (!validateDateLong()) {
+			var e = jQuery.Event( "click" );
+			stopPropagation(e);
+			return;
+		}
+		
+		url += '?city=' + city + '&checkindate=' + idate + '&checkoutdate=' + odate;
+		// 房价
+		url += '&price=' + $('#ulPriceFilter a.selected').attr('data');
+		// 星级
+		var star = [];
+		$('#ulStarFilter a.selected').each(function(){
+			star.push($(this).attr('data'));
+		});
+		url += '&stars=' + star.join(',');
+		// 品牌
+		var brands = [];
+		$('#ulBrandFilter a.selected, #brandFilter a.selected').each(function(){
+			brands.push($(this).attr('data'));
+		});
+		url += '&brands=' + brands.join(',');
+		// 关键字
+		if ($('#keyWord').val() != '请输入酒店名/品牌/位置等关键词') {
+			url +='&keyword=' + cleanParams($('#keyWord').val());
+		}
+		// 页码
+		url += '&p=' + (p || 1);
+		
+		// 先取消之前未完成的请求
+		if ($transfer && $transfer.readyState != 4) {
+			$transfer.abort();
+		}
+		// 发送新的请求
+		$transfer = $.ajax({
+			url:		encodeURI(url),
+			type:		'get',
+			dataType:	'html',
+			success:	function(s) {
+				$('#r_result').html(s);
+				$("#r_result").fadeIn("1000");
+				hotelMap.reloadMap();
+			},
+			error:		function(e) {}
+		});
+	},
+	
+	// 重载酒店地图
+	reloadMap:	function() {
+		map.clearOverlays();
+		map.centerAndZoom($('#txtCity').val());
+		$('#poi-list dl').each(function(i, n) {
+			var $obj = $(this);
+			var psrc = $obj.find('.coordinate').val().split(',');
+			var point = new BMap.Point(psrc[0], psrc[1]);
+			
+			var translateCallback = function(point) {
+				var myIcon = new BMap.Icon("http://img4.tuniucdn.com/img/20131202/hotel_v2/map_points.png", new BMap.Size(23, 25), {
+					offset: new BMap.Size(10, 25),
+					imageOffset: new BMap.Size(0, -25 * i)
+				});
+				var marker = new BMap.Marker(point, {icon: myIcon});
+				var infoWindow = new BMap.InfoWindow(makeView($obj));
+				map.addOverlay(marker);
+
+				marker.addEventListener("click", function() {
+					this.openInfoWindow(infoWindow);
+				});
+				$obj.on('hover', function() {
+					marker.openInfoWindow(infoWindow);
+				});
+			}
+			
+			BMap.Convertor.translate(point, 2, translateCallback);
+		});
+		
+		// 根据搜索关键字移动地图中心点位置
+		if ($('#search_keyword').val() != '' && $('#poi-list dl').length) {
+			var psrc = $('#poi-list dl').eq(0).find('.coordinate').val().split(',');
+			var point = new BMap.Point(psrc[0], psrc[1]);
+			map.setCenter(point);
+			map.setZoom(19);
+		}
+		
+		function makeView($obj) {   //展示弹框获取数据
+			$('#popDes .tit a').text($obj.find('.poi-name').text());
+			$('#popDes .tit a').attr('href', $obj.find('.url').val());
+			$('#popDes .tit span').removeClass().addClass($obj.find('.star').val());
+			$('#popDes .tit span').attr('title', $obj.find('.star_title').val());
+			$('#popDes .popPic a').attr('href', $obj.find('.url').val());
+			$('#popDes .popPic img').attr('src', $obj.find('.pic').val());
+			$("#popDes .popMes .icon").html($obj.find(".icon").html());
+			$("#popDes .popMes .price b").html($obj.find(".price i").html());
+			$("#popDes .popMes .hotel_icon").html($obj.find(".hotel_icon").html());
+			$("#popDes .popMes .hotel_btn a").attr('href', $obj.find(".url").val());
+			var $clone = $("#popDes").clone().show();
+			return $clone[0];
+		}
+		
+		hotelMap.bindResultEvent();
+	},
+	
+	// 条件筛选
+	filter:	function() {
+		// 房价
+		$('#ulPriceFilter a').on('click', function(){
+			$('#selectMenu .housePrice .input_txt').text($(this).text());
+		});
+		
+		// 星级
+		$('#ulStarFilter a').on('click', function(){
+			if ($(this).hasClass('unlimited')) {
+				$('#ulStarFilter a').removeClass('selected');
+				$(this).addClass('selected');
+			}
+			else if ($(this).hasClass('selected')) {
+				$(this).removeClass('selected');
+				if ($('#ulStarFilter a.selected').length == 0) {
+					$('#ulStarFilter a.unlimited').addClass('selected');
+				}
+			}
+			else {
+				$('#ulStarFilter a.unlimited').removeClass('selected');
+				$($(this)).addClass('selected');
+			}
+			
+			// 重绘已选条件
+			hotelMap.loadCond();
+		});
+		// 品牌
+		$('#ulBrandFilter a, #brandFilter a').live('click', function(){
+			if ($(this).hasClass('unlimited')) {
+				$('#ulBrandFilter a, #brandFilter a').removeClass('selected');
+				$(this).addClass('selected');
+			}
+			else if ($(this).hasClass('selected')) {
+				$(this).removeClass('selected');
+				if ($('#ulBrandFilter a.selected, #brandFilter a.selected').length == 0) {
+					$('#ulBrandFilter a.unlimited').addClass('selected');
+				}
+			}
+			else {
+				$('#ulBrandFilter a.unlimited').removeClass('selected');
+				$($(this)).addClass('selected');
+			}
+			
+			// 重绘已选条件
+			hotelMap.loadCond();
+		});
+		// 设施
+		$('#ulFacilityFilter a').on('click', function(){
+			if ($(this).hasClass('unlimited')) {
+				$('#ulFacilityFilter a').removeClass('selected');
+				$(this).addClass('selected');
+			}
+			else if ($(this).hasClass('selected')) {
+				$(this).removeClass('selected');
+				if ($('#ulFacilityFilter a.selected').length == 0) {
+					$('#ulFacilityFilter a.unlimited').addClass('selected');
+				}
+			}
+			else {
+				$('#ulFacilityFilter a.unlimited').removeClass('selected');
+				$($(this)).addClass('selected');
+			}
+			
+			// 重绘已选条件
+			hotelMap.loadCond();
+		});
+		
+		// 触发搜索
+		$('#selectMenu ul a, .searchBtn').live('click', function() {
+			hotelMap.trigger();
+		});
+		$('#txtCity').on('blur', function() {
+			setTimeout(function(){
+				// 判断城市名是否存在，再触发酒店及品牌列表更新
+				$.ajax({
+					url:		'/ajax/getCityId/',
+					type:		'get',
+					dataType:	'json',
+					data:		{
+						city:	$('#txtCity').val()
+					},
+					success:	function(s) {
+						if (s && s.exists) {
+							$('#city_id').val(s.city_id);
+							$('#city_name').val($('#txtCity').val());
+							hotelMap.trigger();
+							hotelMap.brands();
+						}
+					},
+					error:		function(e) {}
+				});				
+			}, 500);
+		});
+		$('#begin_date, #end_date').on('blur', function(){
+		   hotelMap.trigger();
+		});
+	},
+	trigger:	function() {
+		clearTimeout(timer);
+		timer = setTimeout(function(){
+			hotelMap.recharge();
+		}, 500);
+	}
+}
