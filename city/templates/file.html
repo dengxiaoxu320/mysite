@@ -59,9 +59,9 @@
     });
      $("#diagram").click(function() {
         $("#chartBox").show()
+        $("#createtable").hide();
         if($("tr input:checked").length){
             fromFile.DataDisplay();
-            $("#createtable").hide();
         }
         else{
             if(displayFlag){
