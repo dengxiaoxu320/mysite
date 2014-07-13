@@ -24,7 +24,7 @@ def map(request):
         if int(chartType)==0:
             kw=request.POST.get("name","")
             print kw
-            ci=serializers.serialize("json",CityInfo.objects.all().filter(cityName__endswith=kw).order_by("cityName"))
+            ci=serializers.serialize("json",CityInfo.objects.all().filter(cityProcice=kw).order_by("cityName"))
             # ci=serializers.serialize("json",CityInfo.objects.all())
             print ci
             reponse.write(ci)

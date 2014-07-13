@@ -32,7 +32,6 @@
     </div>
     <div id="chartBox">
         This is an incredibly annoying ad of the type you might find on some web sites.
-        <div id="closeBox">&otimes;</div>
     </div>
 </body>
 </html>
@@ -45,10 +44,10 @@
     map.enableScrollWheelZoom();
     map.enableContinuousZoom();
 
-
+    dChart.init();
     dChart.drag();
-{#    dChart.groupByPro();#}
-{#    dChart.groupBybatch();#}
+    // dChart.groupByPro();
+    dChart.groupBybatch();
 {#    dChart.getDensity();#}
 {#    dChart.groupByregion();#}
 {#    dMap.getBoundary();#}

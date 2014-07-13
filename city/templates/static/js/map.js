@@ -141,10 +141,11 @@ var dMap={
                     dMap.color();
                 }
                 dMap.page(names);
-                dMap.getLngLat(names)
+                // dMap.getLngLat(names)
 //                console.debug(names);
         })
     },
+    // 获取经纬度
     getLngLat:function(e){
         console.debug(e[67])
         var myGeo = new BMap.Geocoder();
