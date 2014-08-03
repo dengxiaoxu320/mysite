@@ -33,9 +33,7 @@ dl{height:45px;border-bottom:1px solid #e7e7e7}
 #chartBox {
 	position:absolute;
 	z-index:2;
-	display:block;
-	/*width:1000px;*/
-    /*height: 400px;*/
+    display: none;
     left:3px;
     top:3px;
 	background-color: #efffee;

@@ -7,21 +7,24 @@
     <file path="/start_script.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1395453603610" ignored="false" />
     <file path="/a.coffee" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1395453665645" ignored="false" />
     <file path="/a.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1395454049072" ignored="false" />
-    <file path="/views.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1402813386322" ignored="false" />
+    <file path="/views.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1405736966953" ignored="false" />
     <file path="/urls.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1402813572960" ignored="false" />
-    <file path="/index.html" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1401587222309" ignored="false" />
+    <file path="/index.html" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1406444991600" ignored="false" />
     <file path="/settings.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1395755040039" ignored="false" />
     <file path="/models.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1400391757830" ignored="false" />
     <file path="/data.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1395475355358" ignored="false" />
     <file path="/dummy.xml" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1395494783678" ignored="false" />
-    <file path="/map.js" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1401597532285" ignored="false" />
+    <file path="/map.js" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1406446078410" ignored="false" />
     <file path="/map.html" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1396672176242" ignored="false" />
-    <file path="/city.css" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1399779817246" ignored="false" />
+    <file path="/city.css" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1406445196917" ignored="false" />
     <file path="/chart.js" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1402828528883" ignored="false" />
     <file path="/search.js" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1398780999977" ignored="false" />
     <file path="/file.html" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1403313798122" ignored="false" />
     <file path="/file.js" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1402830744236" ignored="false" />
-    <file path="/baidu.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1405255285077" ignored="false" />
+    <file path="/baidu.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1405848268860" ignored="false" />
+    <file path="/analyser.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1406359779179" ignored="false" />
+    <file path="/baike.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1406358677777" ignored="false" />
+    <file path="/mongo.py" changelist="c2a20b13-97d7-4cbf-9689-d54eb5d6f8db" time="1406383049348" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +47,16 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/city/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="0" selection-start="210" selection-end="308" vertical-scroll-proportion="-0.7941176">
+            <state line="56" column="30" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="city.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/city/templates/static/css/city.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="18" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -53,56 +65,25 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/city/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="18" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0">
+            <state line="14" column="41" selection-start="501" selection-end="506" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="file.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/city/templates/file.html">
+      <file leaf-file-name="mongo.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/baike/mongo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="31" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.0">
+            <state line="8" column="37" selection-start="245" selection-end="251" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="file.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/city/templates/static/js/file.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="29" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="map.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="map.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/city/templates/static/js/map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="47" selection-start="4462" selection-end="4463" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="baidu.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/baike/baidu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="71" column="23" selection-start="2325" selection-end="2325" vertical-scroll-proportion="0.60294116">
-              <folding>
-                <element signature="e#46#62#0" expanded="true" />
-                <element signature="e#177#934#0" expanded="false" />
-                <element signature="e#1109#1355#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="element.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://C:/Python27/Lib/site-packages/bs4/element.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="904" column="0" selection-start="32512" selection-end="32512" vertical-scroll-proportion="0.0">
+            <state line="161" column="0" selection-start="5315" selection-end="5315" vertical-scroll-proportion="7.990809">
               <folding />
             </state>
           </provider>
@@ -111,7 +92,7 @@
       <file leaf-file-name="chart.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/city/templates/static/js/chart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="239" column="5" selection-start="7370" selection-end="7370" vertical-scroll-proportion="0.0">
+            <state line="7" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,27 +108,27 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/city/templates/static/map.js" />
-        <option value="$PROJECT_DIR$/settings.py" />
-        <option value="$PROJECT_DIR$/city/templates/static/js/search.js" />
-        <option value="$PROJECT_DIR$/city/templates/static/css/city.css" />
         <option value="$PROJECT_DIR$/city/models.py" />
         <option value="$PROJECT_DIR$/city/templates/static/js/jquery.parse.min.js" />
-        <option value="$PROJECT_DIR$/city/views.py" />
         <option value="$PROJECT_DIR$/urls.py" />
-        <option value="$PROJECT_DIR$/city/templates/index.html" />
         <option value="$PROJECT_DIR$/city/data.py" />
         <option value="$PROJECT_DIR$/city/templates/static/js/chart.js" />
         <option value="$PROJECT_DIR$/city/templates/static/js/file.js" />
         <option value="$PROJECT_DIR$/city/templates/file.html" />
-        <option value="$PROJECT_DIR$/city/templates/static/js/map.js" />
         <option value="$PROJECT_DIR$/city/baidu.py" />
+        <option value="$PROJECT_DIR$/city/views.py" />
         <option value="$PROJECT_DIR$/baike/baidu.py" />
+        <option value="$PROJECT_DIR$/baike/analyser.py" />
+        <option value="$PROJECT_DIR$/baike/baike.py" />
+        <option value="$PROJECT_DIR$/baike/mongo.py" />
+        <option value="$PROJECT_DIR$/city/templates/static/css/city.css" />
+        <option value="$PROJECT_DIR$/city/templates/index.html" />
+        <option value="$PROJECT_DIR$/city/templates/static/js/map.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2" />
+    <option name="x" value="-15" />
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
@@ -219,7 +200,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="baike" />
+              <option name="myItemId" value="city" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mysite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mysite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="city" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mysite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mysite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="city" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -258,13 +291,14 @@
       <recent name="C:\mysite\city\templates\static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\mysite\baike1" />
       <recent name="C:\mysite\city\templates\static\image" />
       <recent name="C:\mysite\city\templates\static\js" />
       <recent name="C:\mysite\city\templates\static\css" />
       <recent name="C:\mysite\city\templates\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.baidu">
+  <component name="RunManager" selected="Python.mongo">
     <configuration default="false" name="data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -302,6 +336,46 @@
       <RunnerSettings RunnerId="PyDebugRunner" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="baike" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baike" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mysite" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baike/baike.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PyDebugRunner" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PyDebugRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="mongo" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/baike" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="mysite" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/baike/mongo.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
@@ -417,16 +491,20 @@
       <option name="customRunCommand" value="" />
       <method />
     </configuration>
-    <list size="3">
-      <item index="0" class="java.lang.String" itemvalue="Django server.mysite" />
-      <item index="1" class="java.lang.String" itemvalue="Python.data" />
-      <item index="2" class="java.lang.String" itemvalue="Python.baidu" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.data" />
+      <item index="1" class="java.lang.String" itemvalue="Python.baidu" />
+      <item index="2" class="java.lang.String" itemvalue="Python.baike" />
+      <item index="3" class="java.lang.String" itemvalue="Python.mongo" />
+      <item index="4" class="java.lang.String" itemvalue="Django server.mysite" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.baidu" />
-        <item index="1" class="java.lang.String" itemvalue="Python.baidu" />
-        <item index="2" class="java.lang.String" itemvalue="Python.data" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.mongo" />
+        <item index="1" class="java.lang.String" itemvalue="Python.baike" />
+        <item index="2" class="java.lang.String" itemvalue="Python.baidu" />
+        <item index="3" class="java.lang.String" itemvalue="Python.baidu" />
+        <item index="4" class="java.lang.String" itemvalue="Python.baidu" />
       </list>
     </recent_temporary>
   </component>
@@ -477,18 +555,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="0" width="1382" height="744" extended-state="0" />
+    <frame x="-15" y="0" width="1382" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1310606" sideWeight="0.6712329" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41438356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14696969" sideWeight="0.6558219" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43321916" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34417808" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -559,127 +637,124 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
+        <line-breakpoint type="python-line">
           <url>file://$PROJECT_DIR$/city/views.py</url>
           <line>2</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/baike/analyser.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="12" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="35" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/city/templates/static/js/search.js">
+    <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="49" selection-start="2169" selection-end="2169" vertical-scroll-proportion="3.4901257" />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/city/templates/map.html">
+    <entry file="jar://C:/Python27/Lib/site-packages/mechanize-0.2.5-py2.7.egg!/mechanize/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="319" column="25" selection-start="8727" selection-end="8735" vertical-scroll-proportion="-2.3254902">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/bs4/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="364" column="0" selection-start="14119" selection-end="14119" vertical-scroll-proportion="0.04963235" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/city/templates/file.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="31" selection-start="2461" selection-end="2461" vertical-scroll-proportion="1.6396396" />
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/bs4/element.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="904" column="30" selection-start="32542" selection-end="32542" vertical-scroll-proportion="0.04847397" />
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1123" column="0" selection-start="46950" selection-end="46950" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baike/analyser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="19" selection-start="2255" selection-end="2255" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="20" selection-start="5032" selection-end="5032" vertical-scroll-proportion="1.7271096">
+        <state line="142" column="29" selection-start="5011" selection-end="5011" vertical-scroll-proportion="0.36983842">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/urls.py">
+    <entry file="file://$PROJECT_DIR$/baike/baike.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="32" selection-start="681" selection-end="681" vertical-scroll-proportion="0.51526034">
+        <state line="52" column="36" selection-start="1443" selection-end="1443" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/city/templates/static/js/chart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/city/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="210" selection-end="308" vertical-scroll-proportion="-0.7941176">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/city/templates/file.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="31" selection-start="2461" selection-end="2461" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/city/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="18" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/city/templates/static/js/chart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="239" column="5" selection-start="7370" selection-end="7370" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1480" column="0" selection-start="59057" selection-end="59101" vertical-scroll-proportion="0.39228296">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/city/templates/static/js/map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="47" selection-start="4462" selection-end="4463" vertical-scroll-proportion="0.0">
+        <state line="56" column="30" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/city/templates/static/js/file.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="29" selection-start="206" selection-end="206" vertical-scroll-proportion="0.0">
+        <state line="9" column="29" selection-start="206" selection-end="206" vertical-scroll-proportion="0.04847397" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/city/templates/static/css/city.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="18" selection-start="1085" selection-end="1085" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Python27/Lib/site-packages/mechanize-0.2.5-py2.7.egg!/mechanize/__init__.py">
+    <entry file="file://$PROJECT_DIR$/city/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="14" column="41" selection-start="501" selection-end="506" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/bs4/__init__.py">
+    <entry file="file://$PROJECT_DIR$/baike/mongo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="7" selection-start="1533" selection-end="1533" vertical-scroll-proportion="0.4090909">
+        <state line="8" column="37" selection-start="245" selection-end="251" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/bs4/element.py">
+    <entry file="file://$PROJECT_DIR$/city/templates/static/js/map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="904" column="0" selection-start="32512" selection-end="32512" vertical-scroll-proportion="0.0">
+        <state line="161" column="0" selection-start="5315" selection-end="5315" vertical-scroll-proportion="7.990809">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/baike/baidu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="23" selection-start="2325" selection-end="2325" vertical-scroll-proportion="0.60294116">
-          <folding>
-            <element signature="e#46#62#0" expanded="true" />
-            <element signature="e#177#934#0" expanded="false" />
-            <element signature="e#1109#1355#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -159,3 +159,10 @@ var dMap={
 
     }
 }
+
+var dInfo={
+    getData:function(){
+
+    }
+}
+
