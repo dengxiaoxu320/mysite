@@ -23,7 +23,7 @@ class CrawlerBaike:
         self.br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
         self.br.open(self.url)
     def saveRaw(self,kw,raw):
-        ra=open("rawdata\\%s.txt"  %kw.decode("utf8","ignore").encode("gb18030"),"w")
+        ra=open("rawdata\\%s.html"  %kw.decode("utf8","ignore").encode("gb18030"),"w")
         ra.write(raw)
 
     def getHtml(self,kw):
@@ -41,5 +41,5 @@ class CrawlerBaike:
             # print html
         self.saveRaw(kw,html)
 
-cl=CrawlerBaike()
-cl.getHtml("山西省临县碛口镇西湾村")
+# cl=CrawlerBaike()
+# cl.getHtml("山西省临县碛口镇西湾村")

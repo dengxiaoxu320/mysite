@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript"  src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://baike.bdimg.com/static/widget/lemma/addMeanItem/addMeanItem_e81a5e6d.css" />
+    <link rel="stylesheet" type="text/css" href="http://baike.bdimg.com/static/lemma/pkg/baseviewcss3_f35d49f5.css" />
+    <link rel="stylesheet" type="text/css" href="http://baike.bdimg.com/static/widget/lemma/lemmaTitle/lemmaTitle_d845c2e0.css" />
+    <title>{{ cityDetail.cityname}}</title>
+</head>
+<body>
+    <h1>{{ cityDetail.detail.0.lemmatitle|safe }}</h1>
+    <div>{{ cityDetail.detail.1.summarycontent|safe}}</div>
+    <div>{{ cityDetail.detail.2.baseinfo|safe }}</div>
+    {% for i in cityDetail.detail.3.lemma  %}
+    <div>{{ i.paraname|safe }}</div>
+    <div>{{ i.lemmacontent|safe }}</div>
+    {% endfor %}
+</body>
+    <script type="text/javascript">
+        $("a[href]").each(function(i,e){
+            var realurl="http://baike.baidu.com"+$(e).attr("href")
+            $(e).attr("href",realurl)
+        })
+
+        $("img.pchar").each(function(i,e){
+{#            var realurl="http://baike.baidu.com"+$(e).attr("href")#}
+{#            $(e).attr("href",realurl).removeAttr("href")#}
+            $(e).remove()
+        })
+    </script>
+</html>

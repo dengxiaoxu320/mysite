@@ -6,7 +6,7 @@ class AnalyseBaike:
     def __init__(self,kw):
         self.kw=kw
     def readRaw(self):
-        dirname="rawdata\\%s.txt" %self.kw.decode("utf8","ignore").encode("gb18030")
+        dirname="rawdata\\%s.html" %self.kw.decode("utf8","ignore").encode("gb18030")
         if os.path.isfile(dirname):
             rawfile=open(dirname,"rb")
             self.html=rawfile.read()
@@ -51,7 +51,7 @@ class AnalyseBaike:
                     if currentEle.name=="script":
                         break
                 lemma.append({"paraname":str(name),"lemmacontent":str(content)})
-            return lemma
+            return {"lemma":lemma}
         else:
             return 0
     def getDetail(self):

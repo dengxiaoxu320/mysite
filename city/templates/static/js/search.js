@@ -23,7 +23,7 @@ var dsearch={
     },
 
     search:function(){
-        $.post("/map/",{name:$("#kw").val()},function(s){
+        $.post("/map/",{name:$("#kw").val(),chartType:"0"},function(s){
                 s=eval('('+s+')');
                 console.debug(s);
                 var names=[];

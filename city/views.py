@@ -9,7 +9,7 @@ from mysite.city.models import GdpPoulation
 from mysite.city.models import CityName
 from django.db.models import Count
 import json
-from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from baike.baike import  Baike
 
 def city(request):
          return render_to_response("index.html",{})
@@ -24,7 +24,7 @@ def map(request):
         if int(chartType)==0:
             kw=request.POST.get("name","")
             print kw
-            ci=serializers.serialize("json",CityInfo.objects.all().filter(cityProcice=kw).order_by("cityName"))
+            ci=serializers.serialize("json",CityInfo.objects.all().filter(cityName__contains=kw).order_by("cityName"))
             # ci=serializers.serialize("json",CityInfo.objects.all())
             print ci
             reponse.write(ci)
@@ -87,3 +87,11 @@ def map(request):
             print json.dumps(num)
             reponse.write(json.dumps(num))
     return HttpResponse(reponse)
+
+def detail(request,pk):
+    response=HttpResponse()
+    cityname=CityInfo.objects.filter(pk=pk)
+    print cityname[0].cityName
+    bk=Baike()
+    cityDetail=bk.getCityDetail(cityname[0].cityName)
+    return render_to_response("detail.html",{"cityDetail":cityDetail})

@@ -7,7 +7,7 @@ var greenIcon=new BMap.Icon('http://127.0.0.1:8000/image/blueflag.png', new BMap
 var dMap={
 
     refresh: function (subitem){
-        $("#left-restul").append("<dl><dt><a id='result' style='color: blue'>"+subitem+"</a></dt></dl>");
+        $("#left-restul").append("<dl><dt><a id='result' style='color: blue' title="+subitem+">"+subitem+"</a></dt></dl>");
     },
 
     cache: function(names,num_pages,pages){
@@ -26,9 +26,9 @@ var dMap={
         return pages;
     },
 
-    marker: function(cityname,icon){
+    marker: function(cityinfo,icon){
         var myGeo = new BMap.Geocoder();
-        myGeo.getPoint(cityname, function(point){
+        myGeo.getPoint(cityinfo.cityName, function(point){
           if (point) {
 //            console.debug(point);
 //            mark=new BMap.Marker(point);
@@ -37,7 +37,7 @@ var dMap={
             map.addOverlay(mark);
 
 //            var infoWindow = new BMap.InfoWindow("<div id=\"container\" style=\"min-width: 400px; height: 400px; margin: 0 auto\"></div>");
-            var infoWindow = new BMap.InfoWindow("<div>"+cityname+"</div>");
+            var infoWindow = new BMap.InfoWindow("<div><a href='/detail/"+cityinfo.pk+"' name='"+cityinfo.cityName+"'target='_blank'>"+cityinfo.cityName+"</a></div>");
             mark.addEventListener("click",function(){
                 this.openInfoWindow(infoWindow);
 //                dChart.charts();
@@ -137,7 +137,7 @@ var dMap={
                     var cityName=s[i].fields.cityName
                     names.push(cityName);
                     map.clearOverlays();
-                    dMap.marker(cityName,pinkIcon);
+                    dMap.marker({"cityName":cityName,"pk":s[i].pk},pinkIcon);
                     dMap.color();
                 }
                 dMap.page(names);
@@ -159,10 +159,3 @@ var dMap={
 
     }
 }
-
-var dInfo={
-    getData:function(){
-
-    }
-}
-
